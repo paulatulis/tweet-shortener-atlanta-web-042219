@@ -1,5 +1,5 @@
 def dictionary 
-  {
+ dictionary = {
 "hello" => 'hi',
 "to" => '2',
 "two" => '2',
@@ -13,37 +13,41 @@ def dictionary
 }
 end 
 
-tweet_string = "Hey guys, can anyone teach me how to be cool? I really want to be the best at everything, you know what I mean? Tweeting is super fun you guys!!!!"
 
-def word_substituter(tweet_string) 
-  #pass in argument of a string that is a tweet
-  #create a new array that we can put the result into
-  arr_tweets = tweet_string.split(' ') 
-  #make a new variable called arr_tweets that is equal to the array of splitting the tweet_string(original argument) into an array
-  result = arr_tweets.map do |word| 
-    lower_word = word.downcase
-    dictionary.key?(lower_word) ? dictionary[lower_word] : word
+def word_substituter(tweet) 
+  shorter_tweet = []
+  tweet_array = tweet.split(' ') 
+  tweet_array.each do |word| 
+    lower_word = word.downcase 
+    if dictionary.key?(lower_word) 
+    shorter_tweet << dictionary[lower_word] 
+    else 
+    shorter_tweet << word 
   end
-  result.join(' ') 
-  #take the new array and make it back into a string 
+  end
+  shorter_tweet.join(' ') 
 end
 
-def bulk_tweet_shortener(tweets)
-  tweets.each do |tweet|
- puts word_substituter(tweet)
-  end
+def bulk_tweet_shortener(array)
 end
+  
+def bulk_tweet_shortener(array)
+array.each do |x|
+puts word_substituter(x)
+end
+end 
 
 def selective_tweet_shortener(tweet)
-  if tweet.length <141
-    tweet
-  else word_substituter(tweet)
-  end
-end
+  if tweet.length > 140 
+    word_substituter(tweet)
+  else 
+    tweet 
+  end 
+end 
 
 def shortened_tweet_truncator(tweet)
-  if tweet.length <141
-    tweet
-  else tweet[0..136] + "..."
+  if tweet.length < 140 
+  tweet 
+else tweet[0..136] + "..."
 end 
 end 
