@@ -18,9 +18,9 @@ def word_substituter(tweet)
   shorter_tweet = []
   tweet_array = tweet.split(' ') 
   tweet_array.each do |word| 
-    word = word.downcase 
-    if dictionary.key?(word) 
-    shorter_tweet << dictionary[word] 
+    lower_word = word.downcase 
+    if dictionary.key?(lower_word) 
+    shorter_tweet << dictionary[lower_word] 
     else 
     shorter_tweet << word 
   end
