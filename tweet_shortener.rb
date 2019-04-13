@@ -15,4 +15,7 @@ def dictionary
 end 
 
 
-def word_substitut
+def word_substituter(tweet)
+  tweet.split(' ')
+end 
+  
